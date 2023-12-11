@@ -4,9 +4,9 @@ A beamer template based on the [metropolis](https://github.com/matze/mtheme) the
 
 ## Screenshots
 
-<img src="demo/screenshots/demo_titlepage.jpg" width="500" /><img src="demo/screenshots/demo_collaborators.jpg" width="500" />
-<img src="demo/screenshots/demo_what.jpg" width="500" /><img src="demo/screenshots/demo_why.jpg" width="500" />
-<img src="demo/screenshots/demo_textbox.jpg" width="500" /><img src="demo/screenshots/demo_width.jpg" width="500" />
+<img src="demo/screenshots/demo_titlepage.jpg" width="450" /><img src="demo/screenshots/demo_collaborators.jpg" width="450" />
+<img src="demo/screenshots/demo_what.jpg" width="450" /><img src="demo/screenshots/demo_why.jpg" width="450" />
+<img src="demo/screenshots/demo_textbox.jpg" width="45" /><img src="demo/screenshots/demo_width.jpg" width="450" />
 
 
 ## Caveats
