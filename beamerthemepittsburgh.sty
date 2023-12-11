@@ -1,0 +1,313 @@
+\RequirePackage{caption}
+\RequirePackage{tikz}
+\RequirePackage{etoolbox}
+\RequirePackage{varwidth}    
+\RequirePackage{etoolbox}
+\RequirePackage{pgffor}
+\usepackage{changepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+\setbeamersize{text margin left=\marginsize,text margin right=\marginsize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   pghcolorbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+\RequirePackage{tcolorbox}
+\newtcolorbox{pghcolorbox}[3][boxrule=1pt, arc=9pt]
+{
+  toptitle=1.5mm,
+  bottomtitle=1mm,
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = {#3},
+  #1,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\definecolor{gray}{RGB}{167 167 167}
+\definecolor{lightgray}{RGB}{225, 228, 232}
+\definecolor{darkgray}{RGB}{60 60 60}
+\definecolor{turquoise}{RGB}{68 171 145}
+\definecolor{salmon}{RGB}{239 76 125}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{author}{size=\normalfont}
+
+% \setbeamertemplate{title page}
+% {
+%   \begin{adjustwidth}{0cm}{-4cm}
+%     \vskip0pt plus 1filll
+%     \begin{centering}
+%       {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\\
+%       {\insertauthor}\\
+%       {\insertdate}\\
+%     \end{centering}
+%     \vskip0pt plus 1filll
+%   \end{adjustwidth}
+% }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Centering on title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Taken from https://tex.stackexchange.com/questions/478172/metropolis-beamer-title-page
+
+\setbeamertemplate{title page}{
+  \begin{adjustwidth}{-\additionaltitlemargin}{-\additionaltitlemargin}
+    \begin{minipage}[c][\paperheight]{\linewidth}
+        \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+        \vfill%
+        {
+        \centering
+        \vspace*{1cm}
+        \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+        \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+        }
+        \usebeamertemplate*{title separator}
+        \vspace*{-0.7cm}
+        \begin{minipage}[t]{\linewidth}
+          \centering
+            \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+            \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+        \end{minipage}
+
+        \begin{minipage}[t]{\linewidth}
+            \centering
+            \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+        \end{minipage}
+        \vfill
+        \vspace*{1mm}
+    \end{minipage}
+  \end{adjustwidth}
+}
+
+\setbeamertemplate{title}{
+%  \raggedright%  % <-- Comment here
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+\setbeamertemplate{subtitle}{
+%  \raggedright%  % <-- Comment here
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Frames
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% \setbeamertemplate{frametitle}[default][center]
+% \setbeamersize{text margin top=2cm,text margin right=10pt}
+
+% \setbeamertemplate {frametitle}
+% {
+%   \begin{beamercolorbox}[sep=2.5em,center]{frametitle}
+%     \usebeamerfont{frametitle}\insertframetitle
+%   \end{beamercolorbox}
+% }
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=4.0ex,dp=0.6ex]{frametitle}
+        \centering\insertframetitle%
+    \end{beamercolorbox}%
+    \vspace*{0cm}
+}
+
+\setlength{\metropolis@frametitle@padding}{1.5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% footer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% Captions
+% \captionsetup[figure]{labelfont={bf,color=brown}}
+% \captionsetup[table]{labelfont={bf,color=brown}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Progress bar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand{\progressbar}{1pt}
+% \makeatletter
+% \setlength{\metropolis@titleseparator@linewidth}{\progressbar}
+% \setlength{\metropolis@progressonsectionpage@linewidth}{\progressbar}
+% \setlength{\metropolis@progressinheadfoot@linewidth}{\progressbar}
+% \makeatother
+\setbeamercolor{progress bar}{fg=lightgray,bg=lightgray}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\setmonofont{Inconsolata}
+\setbeamerfont{frametitle}{size=\large}
+% \setbeamerfont{normal text}{size=\small}
+% \AtBeginDocument{\usebeamerfont{normal text}}
+
+% \DeclareMathSizes{15}{15}{7}{7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\setbeamercolor{alerted text}{fg=darkgray}
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamercolor{palette primary}{bg=white}
+
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=darkgray}
+
+\setbeamercolor{title separator}{fg=lightgray, bg=lightgray}
+
+\setbeamercolor{frametitle}{bg=white, fg=accent}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\newcommand{\toctitle}{Table of Contents}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{section in toc shaded}[default][100]
+\setbeamercolor{section in toc}{fg=darkgray}
+% Using mdseries so that shaded stuff doesn't get bolded. See TOC stuff below.
+\setbeamerfont{section in toc shaded}{series=\mdseries}
+\setbeamercolor{section in toc shaded}{fg=gray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Get centered TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% \newlength{\secnamelength}
+% \newsavebox{\longestsec}% Box to save longest sectional heading
+% \patchcmd{\beamer@section}% <cmd>
+%   {\beamer@savemode}% <search>
+%   {\begin{lrbox}{\longestsec}#1\end{lrbox}%
+%    \ifdim\wd\longestsec>\secnamelength\relax\setlength{\secnamelength}{\wd\longestsec}\fi%
+%    \beamer@savemode}% <replace>
+%   {}{}% <success><failure>
+% \AtEndDocument{% http://tex.stackexchange.com/q/137495/5764
+%   \immediate\write\@auxout{\global\secnamelength=\the\secnamelength}%
+% }
+\makeatletter
+\newlength{\secnamelength}
+\newsavebox{\longestsec}% Box to save longest sectional heading
+\patchcmd{\beamer@section}% <cmd>
+{\beamer@savemode}% <search>
+{
+\ifstrempty{#2}{%
+    % The "2. " is just so that the number in the section
+    % is also counted in the calculation of the longest sec
+    \begin{lrbox}{\longestsec}2. #1\end{lrbox}
+    \ifthenelse{
+        \wd\longestsec > \secnamelength
+    }{
+        \setlength{\secnamelength}{\wd\longestsec}
+    }{}%else
+}{
+    % The "2. " is just so that the number in the section
+    % is also counted in the calculation of the longest sec
+    \begin{lrbox}{\longestsec}2. #2\end{lrbox}
+    \ifthenelse{
+        \wd\longestsec > \secnamelength
+    }{
+        \setlength{\secnamelength}{\wd\longestsec}
+    }{}%else
+}
+\beamer@savemode
+}% <replace>
+{}{}% <success><failure>
+\AtEndDocument{% http://tex.stackexchange.com/q/137495/5764
+    \immediate\write\@auxout{\global\secnamelength=\the\secnamelength}%
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Initial page TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\newcommand{\firstpagetoc} {
+\begin{frame}[noframenumbering]
+ \frametitle{\toctitle{}}
+ \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
+ \tableofcontents
+ 
+ % \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}
+ % \tableofcontents
+ \thispagestyle{empty}
+\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TOC highlighting at beginning
+% of each section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\AtBeginSection{
+  \ifnum\includetoc=1{%
+      \begin{frame}[noframenumbering]
+        \frametitle{\toctitle{}}
+        \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
+        {\bfseries \tableofcontents[currentsection]}
+        % Setting bfseries here to only bold the upcoming section.
+        % Somehow, it doesn't apply to the shaded stuff because I set it to \mdseries above.
+        % Not sure why it works, but it does!
+        \thispagestyle{empty}
+      \end{frame}
+    }
+  \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Widen command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand\widen[2][3em]{%
+\makebox[\linewidth][c]{%
+  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+  \raggedright#2
+  \end{minipage}%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Centered Slide numbers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\defbeamertemplate{footline}{centered plain}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+  \centering
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \usebeamertemplate*{frame numbering}
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{footline}[centered plain]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Collaborators slide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\newcommand{\displayimages}[5]{
+  \centering
+  \foreach \filename/\collabname in #2 {
+    % Dynamically create minipage size based on number of collaborators
+    \begin{minipage}{#3\textwidth}
+    % \begin{minipage}{0.45\textwidth}
+      \centering
+      \includegraphics[height=#4\textheight]{#1\filename}\\
+      {#5 \collabname}
+
+    \end{minipage}
+  }
+}

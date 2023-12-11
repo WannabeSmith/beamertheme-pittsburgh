@@ -1,0 +1,124 @@
+#+TITLE: Pittsburgh
+#+begin_comment
+Title page Contents
+#+end_comment
+#+BEAMER_HEADER: \title{The Pittsburgh template}
+#+BEAMER_HEADER: \subtitle{A beamer theme based on metropolis}
+#+BEAMER_HEADER: \author{Ian Waudby-Smith}
+#+BEAMER_HEADER: \date{}
+#+BEAMER_HEADER: \institute{Carnegie Mellon University\\Pittsburgh, PA, USA}
+
+#+begin_comment
+Pittsburgh / beamer / metropolis global settings 
+#+end_comment
+#+STARTUP: beamer
+#+BEAMER_THEME: metropolis
+#+BEAMER_HEADER: \newcommand{\includetoc}{1} % set 1 or 0 to include Table of Contents or not
+#+BEAMER_HEADER: \newcommand{\marginsize}{2cm} % Margin size globally
+#+BEAMER_HEADER: \newcommand{\additionaltitlemargin}{0cm} % Additional margin for title page
+#+BEAMER_HEADER: \definecolor{accent}{RGB}{192 97 106} % Accent color throughout
+#+BEAMER_HEADER: \usepackage{/Users/i/GitProjects/beamertheme-pittsburgh/beamerthemepittsburgh}
+#+OPTIONS: H:2 toc:nil
+#+LaTeX_CLASS_OPTIONS: [14pt,aspectratio=169]
+
+#+begin_comment
+Fancy fonts settings (optional)
+#+end_comment
+#+BEAMER_HEADER: \usepackage{/Users/i/GitProjects/beamertheme-pittsburgh/pittsburgh_fancyfonts}
+#+BEAMER_HEADER: \usefonttheme{serif} % default family is serif
+#+BEAMER_HEADER: \setmainfont{Palatino}
+
+#+begin_comment
+Other preamble settings
+Create preamble.sty or delete
+#+end_comment
+#+BEAMER_HEADER: %\usepackage{preamble}
+
+#+begin_export latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Collaborators slide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[noframenumbering]{Collaborators}
+\thispagestyle{empty}
+
+\newcommand{\collaborators}{
+  {carnegie.jpeg/Collaborator 1\\Carnegie Tech},
+  {mellon.jpg/Collaborator 2\\Mellon Institute}}
+
+% First argument (./assets) is the location of images,
+% Second argument is the collaborators list
+% Third argument is the width of minipages
+% Fourth argument is the height of the images
+% Fifth argument is the size of text
+\displayimages{./assets/}{\collaborators}{0.45}{0.35}{\small}
+
+\end{frame}
+
+#+end_export
+
+#+begin_comment
+Table of contents
+#+end_comment
+
+#+begin_export latex
+\renewcommand{\toctitle}{Outline of demo presentation}
+\ifnum\includetoc=1{%
+    \firstpagetoc
+  }
+\fi
+#+end_export
+
+#+begin_comment
+Main talk content
+#+end_comment
+
+* An overview of the =pittsburgh= template
+** What is the =pittsburgh= template?
+=pittsburgh= is a beamer template based on the widely used =metropolis= theme.
+
+It's called "pittsburgh" because Pittsburgh, PA is a metropolis.
+
+** Why?
+I /love/ the aesthetics of Apple's Keynote presentations on macOS but
+1. Keynote only runs on macOS and thus presentations are lost when switching OSs,
+   \pause
+3. Its files tend to be quite large relative to their content, and
+   \pause
+4. Its math fonts don't match the LaTeX ones.
+   \pause
+Beamer fixes the above and =pittsburgh= attempts to carry over the slick design of Keynote.
+
+
+* Some cool features
+
+** Cool feature I: /Pretty text boxes/
+#+begin_export latex
+\widen[1cm]{
+  \begin{pghcolorbox}{turquoise}{\textbf{Contextual bandits} (Langford \& Zhang, '07)}
+  
+
+    For $t= 1,2,...$:
+
+    \quad Agent observes a context $X_t $ (typically in $\mathbb R^d$).
+
+    \quad Agent takes action $A_t \sim h_t(\cdot \mid X_t)$.
+
+    \quad Agent observes reward $R_t$ (typically in $\mathbb R$).
+
+    EndFor
+
+  \end{pghcolorbox}
+}
+#+end_export
+
+** Cool feature II: /Adjustable width/
+What if a particular sentence just barely fits in one line?
+
+Like that one above. The =widen= command allows you to dynamically widen or shrink the allowable width:
+
+\widen[1.5cm]{\centering "What if a particular sentence just barely fits in one line?"}
+
+** 
+\centering
+Have fun!

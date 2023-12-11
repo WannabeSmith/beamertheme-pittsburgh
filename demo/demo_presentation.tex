@@ -1,0 +1,123 @@
+% Created 2023-12-11 Mon 13:56
+% Intended LaTeX compiler: xelatex
+\documentclass[14pt,aspectratio=169]{beamer}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usetheme{metropolis}
+\author{i}
+\date{\today}
+\title{Pittsburgh}
+\title{The Pittsburgh template}
+\subtitle{A beamer theme based on metropolis}
+\author{Ian Waudby-Smith}
+\date{}
+\institute{Carnegie Mellon University\\Pittsburgh, PA, USA}
+\newcommand{\includetoc}{1} % set 1 or 0 to include Table of Contents or not
+\newcommand{\marginsize}{2cm} % Margin size globally
+\newcommand{\additionaltitlemargin}{0cm} % Additional margin for title page
+\definecolor{accent}{RGB}{192 97 106} % Accent color throughout
+\usepackage{/Users/i/GitProjects/beamertheme-pittsburgh/beamerthemepittsburgh}
+\usepackage{/Users/i/GitProjects/beamertheme-pittsburgh/pittsburgh_fancyfonts}
+\usefonttheme{serif} % default family is serif
+\setmainfont{Palatino}
+%\usepackage{preamble}
+\hypersetup{
+ pdfauthor={i},
+ pdftitle={Pittsburgh},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7-pre)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Collaborators slide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[noframenumbering]{Collaborators}
+\thispagestyle{empty}
+
+\newcommand{\collaborators}{
+  {carnegie.jpeg/Collaborator 1\\Carnegie Tech},
+  {mellon.jpg/Collaborator 2\\Mellon Institute}}
+
+% First argument (./assets) is the location of images,
+% Second argument is the collaborators list
+% Third argument is the width of minipages
+% Fourth argument is the height of the images
+% Fifth argument is the size of text
+\displayimages{./assets/}{\collaborators}{0.45}{0.35}{\small}
+
+\end{frame}
+
+\renewcommand{\toctitle}{Outline of demo presentation}
+\ifnum\includetoc=1{%
+    \firstpagetoc
+  }
+\fi
+
+\section{An overview of the \texttt{pittsburgh} template}
+\label{sec:org326dfab}
+\begin{frame}[label={sec:orgb4da410},fragile]{What is the \texttt{pittsburgh} template?}
+ \texttt{pittsburgh} is a beamer template based on the widely used \texttt{metropolis} theme.
+
+It's called "pittsburgh" because Pittsburgh, PA is a metropolis.
+\end{frame}
+
+\begin{frame}[label={sec:org9a6dcee},fragile]{Why?}
+ I \emph{love} the aesthetics of Apple's Keynote presentations on macOS but
+\begin{enumerate}
+\item Keynote only runs on macOS and thus presentations are lost when switching OSs,
+\pause
+\item Its files tend to be quite large relative to their content, and
+\pause
+\item Its math fonts don't match the \LaTeX{} ones.
+\pause
+\end{enumerate}
+Beamer fixes the above and \texttt{pittsburgh} attempts to carry over the slick design of Keynote.
+\end{frame}
+
+
+\section{Some cool features}
+\label{sec:orgb4d44a2}
+
+\begin{frame}[label={sec:org27c9896}]{Cool feature I: \emph{Pretty text boxes}}
+\widen[1cm]{
+  \begin{pghcolorbox}{turquoise}{\textbf{Contextual bandits} (Langford \& Zhang, '07)}
+  
+
+    For $t= 1,2,...$:
+
+    \quad Agent observes a context $X_t $ (typically in $\mathbb R^d$).
+
+    \quad Agent takes action $A_t \sim h_t(\cdot \mid X_t)$.
+
+    \quad Agent observes reward $R_t$ (typically in $\mathbb R$).
+
+    EndFor
+
+  \end{pghcolorbox}
+}
+\end{frame}
+
+\begin{frame}[label={sec:org72160a9},fragile]{Cool feature II: \emph{Adjustable width}}
+ What if a particular sentence just barely fits in one line?
+
+Like that one above. The \texttt{widen} command allows you to dynamically widen or shrink the allowable width:
+
+\widen[1.5cm]{\centering "What if a particular sentence just barely fits in one line?"}
+\end{frame}
+
+\begin{frame}[label={sec:orgc4b9998}]{}
+\centering
+Have fun!
+\end{frame}
+\end{document}
