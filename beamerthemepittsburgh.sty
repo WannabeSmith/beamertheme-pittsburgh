@@ -118,15 +118,32 @@
 %     \usebeamerfont{frametitle}\insertframetitle
 %   \end{beamercolorbox}
 % }
+
+
+% Define a command to check if the frame has a title
+\makeatletter
+\newcommand{\ifframetitle}[2]{%
+  \ifx\insertframetitle\@empty
+    #1%
+  \else
+    #2%
+  \fi
+}
+\makeatother
+
+% Define the desired vspace for frames with and without titles
+\newcommand{\frametitlespace}{\ifframetitle{\vspace{1cm}}{\vspace{0cm}}}
+
 \setbeamertemplate{frametitle}{%
     \nointerlineskip%
+
     \begin{beamercolorbox}[wd=\paperwidth,ht=4.0ex,dp=0.6ex]{frametitle}
-        \centering\insertframetitle%
+      \centering\insertframetitle%
     \end{beamercolorbox}%
-    \vspace*{0cm}
+    \frametitlespace
 }
 
-\setlength{\metropolis@frametitle@padding}{1.5cm}
+% \setlength{\metropolis@frametitle@padding}{1.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % footer
@@ -152,8 +169,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fonts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\setmonofont{Inconsolata}
-\setbeamerfont{frametitle}{size=\large}
+% \setmonofont{Inconsolata}
+\setbeamerfont{frametitle}{size=\Large}
 % \setbeamerfont{normal text}{size=\small}
 % \AtBeginDocument{\usebeamerfont{normal text}}
 
@@ -171,7 +188,7 @@
 
 \setbeamercolor{title separator}{fg=lightgray, bg=lightgray}
 
-\setbeamercolor{frametitle}{bg=white, fg=accent}
+\setbeamercolor{frametitle}{bg=white, fg=darkgray}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
