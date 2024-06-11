@@ -5,11 +5,20 @@
 \RequirePackage{etoolbox}
 \RequirePackage{pgffor}
 \usepackage{changepage}
+\usepackage{colortbl}
+\usepackage{appendixnumberbeamer}
+\usetheme{metropolis}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Margins
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
 \setbeamersize{text margin left=\marginsize,text margin right=\marginsize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% skip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\parskip=12pt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   pghcolorbox
@@ -34,7 +43,8 @@
 \definecolor{darkgray}{RGB}{60 60 60}
 \definecolor{turquoise}{RGB}{68 171 145}
 \definecolor{salmon}{RGB}{239 76 125}
-
+\definecolor{royalblue}{RGB}{64 120 242}
+\definecolor{lightgrayblue}{RGB}{197, 234, 254}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title page
@@ -121,18 +131,18 @@
 
 
 % Define a command to check if the frame has a title
-\makeatletter
-\newcommand{\ifframetitle}[2]{%
-  \ifx\insertframetitle\@empty
-    #1%
-  \else
-    #2%
-  \fi
-}
-\makeatother
+% \makeatletter
+% \newcommand{\ifframetitle}[2]{%
+%   \ifx\insertframetitle\@empty
+%     #1%
+%   \else
+%     #2%
+%   \fi
+% }
+% \makeatother
 
 % Define the desired vspace for frames with and without titles
-\newcommand{\frametitlespace}{\ifframetitle{\vspace{1cm}}{\vspace{0cm}}}
+\newcommand{\frametitlespace}{\vspace{0.7cm}}
 
 \setbeamertemplate{frametitle}{%
     \nointerlineskip%
@@ -140,9 +150,21 @@
     \begin{beamercolorbox}[wd=\paperwidth,ht=4.0ex,dp=0.6ex]{frametitle}
       \centering\insertframetitle%
     \end{beamercolorbox}%
-    \frametitlespace
-}
+  }
 
+% Apply the same customization to the appendix
+\makeatletter
+\let\beamer@oldappendix=\appendix
+\def\appendix{%
+    \beamer@oldappendix%
+    \setbeamertemplate{frametitle}{%
+        \nointerlineskip%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.0ex,dp=0.6ex]{frametitle}
+          \centering\insertframetitle%
+        \end{beamercolorbox}%
+    }
+}
+\makeatother
 % \setlength{\metropolis@frametitle@padding}{1.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,6 +212,11 @@
 
 \setbeamercolor{frametitle}{bg=white, fg=darkgray}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\arrayrulecolor{lightgray}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOC
@@ -203,6 +230,8 @@
 % Using mdseries so that shaded stuff doesn't get bolded. See TOC stuff below.
 \setbeamerfont{section in toc shaded}{series=\mdseries}
 \setbeamercolor{section in toc shaded}{fg=gray}
+
+\newcommand{\tocspacingaftertitle}{\vspace{0.5cm}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Get centered TOC
@@ -255,15 +284,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \newcommand{\firstpagetoc} {
-\begin{frame}[noframenumbering]
- \frametitle{\toctitle{}}
- \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
- \tableofcontents
- 
- % \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}
- % \tableofcontents
- \thispagestyle{empty}
-\end{frame}
+  \begin{frame}[noframenumbering]
+    \frametitle{\toctitle{}}
+    \tocspacingaftertitle
+    \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
+    \tableofcontents
+    
+    % \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}
+    % \tableofcontents
+    \thispagestyle{empty}
+  \end{frame}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -275,6 +305,7 @@
   \ifnum\includetoc=1{%
       \begin{frame}[noframenumbering]
         \frametitle{\toctitle{}}
+        \tocspacingaftertitle
         \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
         {\bfseries \tableofcontents[currentsection]}
         % Setting bfseries here to only bold the upcoming section.
@@ -301,7 +332,7 @@
 % Centered Slide numbers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \defbeamertemplate{footline}{centered plain}{%
-  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+  \begin{beamercolorbox}[wd=\textwidth, sep=2ex]{footline}%
   \centering
     \usebeamerfont{page number in head/foot}%
     \usebeamertemplate*{frame footer}
@@ -326,5 +357,26 @@
       {#5 \collabname}
 
     \end{minipage}
+  }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% No slide number command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand{\noslidenumber}{\thispagestyle{empty}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% This is necessary because metropolis appendices are pretty broken.
+% e.g. https://github.com/matze/mtheme/issues/274
+
+
+\newcommand{\appendixpgh}{
+  \setcounter{framenumber}{0}
+  \renewcommand{\insertframenumber}{%
+    A\arabic{framenumber}
   }
 }
