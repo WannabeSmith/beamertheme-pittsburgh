@@ -1,4 +1,4 @@
-% Created 2023-12-11 Mon 13:56
+% Created 2024-04-02 Tue 16:50
 % Intended LaTeX compiler: xelatex
 \documentclass[14pt,aspectratio=169]{beamer}
 \usepackage{graphicx}
@@ -10,10 +10,8 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usetheme{metropolis}
 \author{i}
 \date{\today}
-\title{Pittsburgh}
 \title{The Pittsburgh template}
 \subtitle{A beamer theme based on metropolis}
 \author{Ian Waudby-Smith}
@@ -65,14 +63,14 @@
 \fi
 
 \section{An overview of the \texttt{pittsburgh} template}
-\label{sec:org326dfab}
-\begin{frame}[label={sec:orgb4da410},fragile]{What is the \texttt{pittsburgh} template?}
+\label{sec:org45c4f75}
+\begin{frame}[label={sec:org2e6fba1},fragile]{What is the \texttt{pittsburgh} template?}
  \texttt{pittsburgh} is a beamer template based on the widely used \texttt{metropolis} theme.
 
 It's called "pittsburgh" because Pittsburgh, PA is a metropolis.
 \end{frame}
 
-\begin{frame}[label={sec:org9a6dcee},fragile]{Why?}
+\begin{frame}[label={sec:orgf10487a},fragile]{Why?}
  I \emph{love} the aesthetics of Apple's Keynote presentations on macOS but
 \begin{enumerate}
 \item Keynote only runs on macOS and thus presentations are lost when switching OSs,
@@ -87,9 +85,9 @@ Beamer fixes the above and \texttt{pittsburgh} attempts to carry over the slick 
 
 
 \section{Some cool features}
-\label{sec:orgb4d44a2}
+\label{sec:orgb388f18}
 
-\begin{frame}[label={sec:org27c9896}]{Cool feature I: \emph{Pretty text boxes}}
+\begin{frame}[label={sec:org4f679a1}]{Cool feature I: \emph{Pretty text boxes}}
 \widen[1cm]{
   \begin{pghcolorbox}{turquoise}{\textbf{Contextual bandits} (Langford \& Zhang, '07)}
   
@@ -108,7 +106,7 @@ Beamer fixes the above and \texttt{pittsburgh} attempts to carry over the slick 
 }
 \end{frame}
 
-\begin{frame}[label={sec:org72160a9},fragile]{Cool feature II: \emph{Adjustable width}}
+\begin{frame}[label={sec:orgc0117a7},fragile]{Cool feature II: \emph{Adjustable width}}
  What if a particular sentence just barely fits in one line?
 
 Like that one above. The \texttt{widen} command allows you to dynamically widen or shrink the allowable width:
@@ -116,8 +114,24 @@ Like that one above. The \texttt{widen} command allows you to dynamically widen 
 \widen[1.5cm]{\centering "What if a particular sentence just barely fits in one line?"}
 \end{frame}
 
-\begin{frame}[label={sec:orgc4b9998}]{}
+\begin{frame}[label={sec:orgb7416f2}]{}
 \centering
 Have fun!
 \end{frame}
+
+
+\appendixpgh
+
+
+\begin{frame}{Appendix slide}
+  Put your appendix stuff here.
+\end{frame}
+
 \end{document}
+
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End: 
