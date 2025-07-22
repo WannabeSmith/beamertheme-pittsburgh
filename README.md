@@ -13,7 +13,7 @@ A demo pdf can also be found [here](demo/demo_presentation.pdf) using the TeX in
 
 ## Warning 
 
-This is just the template I use for presentations so it might have bugs or be annoying to customize. I have made available online at the request of some friends and colleagues.
+This is just the template I use for presentations so it might have bugs or be annoying to customize. However, I have made it available online at the request of some friends and colleagues.
 
 ## License
 
