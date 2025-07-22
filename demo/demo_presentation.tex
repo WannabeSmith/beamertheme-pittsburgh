@@ -24,7 +24,10 @@
 \usepackage{../../beamertheme-pittsburgh/pittsburgh_fancyfonts}
 \usefonttheme{serif} % default family is serif
 % \setmainfont{Palatino} % Nice font but commented out because it's not available on some OSs by default
+
 \begin{document}
+
+\newcommand{\Accent}[1]{\textbf{\textcolor{accent}{#1}}}
 
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,11 +56,11 @@
   }
 \fi
 
-\section{An overview of the \texttt{pittsburgh} template}
-\begin{frame}{What is the \texttt{pittsburgh} template?}
- \texttt{pittsburgh} is a beamer template based on the widely used \texttt{metropolis} theme.
+\section{An overview of the \Accent{pittsburgh} template}
+\begin{frame}{What is the \Accent{pittsburgh} template?}
+ \Accent{pittsburgh} is a beamer template based on the widely used \texttt{metropolis} theme.
 
-It's called \texttt{pittsburgh} because Pittsburgh, PA is the metropolis where this was made.
+It's called \Accent{pittsburgh} because Pittsburgh, PA is the metropolis where this was made.
 \end{frame}
 
 \begin{frame}{Why?}
@@ -71,7 +74,7 @@ It's called \texttt{pittsburgh} because Pittsburgh, PA is the metropolis where t
 \item Its math fonts don't match the \LaTeX{} ones.
 \pause
 \end{enumerate}
-Beamer fixes the above and \texttt{pittsburgh} attempts to carry over some of the slick design of Keynote.
+Beamer fixes the above and \Accent{pittsburgh} attempts to carry over some of the slick design of Keynote.
 \end{frame}
 
 
@@ -96,10 +99,10 @@ Beamer fixes the above and \texttt{pittsburgh} attempts to carry over some of th
 }
 \end{frame}
 
-\begin{frame}{Cool feature II: \emph{Adjustable width}}
+\begin{frame}{Cool feature II: \emph{Adjustable slide widths}}
  What if a particular sentence just barely fits in one line?
 
-Like that one above. The \texttt{widen} command allows you to dynamically widen or shrink the allowable width:
+(Like the one above.) The \texttt{\textbackslash widen} command allows you to dynamically widen or shrink the allowable width:
 
 \widen[1.5cm]{\centering ``What if a particular sentence just barely fits in one line?''}
 \end{frame}
