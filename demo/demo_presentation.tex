@@ -1,4 +1,3 @@
-% Created 2024-04-02 Tue 16:50
 % Intended LaTeX compiler: xelatex
 \documentclass[14pt,aspectratio=169]{beamer}
 \usepackage{graphicx}
@@ -16,23 +15,15 @@
 \subtitle{A beamer theme based on metropolis}
 \author{Ian Waudby-Smith}
 \date{}
-\institute{Carnegie Mellon University\\Pittsburgh, PA, USA}
+\institute{Institute\\Pittsburgh, PA, USA}
 \newcommand{\includetoc}{1} % set 1 or 0 to include Table of Contents or not
 \newcommand{\marginsize}{2cm} % Margin size globally
 \newcommand{\additionaltitlemargin}{0cm} % Additional margin for title page
 \definecolor{accent}{RGB}{192 97 106} % Accent color throughout
-\usepackage{/Users/i/GitProjects/beamertheme-pittsburgh/beamerthemepittsburgh}
-\usepackage{/Users/i/GitProjects/beamertheme-pittsburgh/pittsburgh_fancyfonts}
+\usepackage{../../beamertheme-pittsburgh/beamerthemepittsburgh}
+\usepackage{../../beamertheme-pittsburgh/pittsburgh_fancyfonts}
 \usefonttheme{serif} % default family is serif
-\setmainfont{Palatino}
-%\usepackage{preamble}
-\hypersetup{
- pdfauthor={i},
- pdftitle={Pittsburgh},
- pdfkeywords={},
- pdfsubject={},
- pdfcreator={Emacs 29.1 (Org mode 9.7-pre)}, 
- pdflang={English}}
+% \setmainfont{Palatino} % Nice font but commented out because it's not available on some OSs by default
 \begin{document}
 
 \maketitle
@@ -63,15 +54,15 @@
 \fi
 
 \section{An overview of the \texttt{pittsburgh} template}
-\label{sec:org45c4f75}
-\begin{frame}[label={sec:org2e6fba1},fragile]{What is the \texttt{pittsburgh} template?}
+\begin{frame}{What is the \texttt{pittsburgh} template?}
  \texttt{pittsburgh} is a beamer template based on the widely used \texttt{metropolis} theme.
 
-It's called "pittsburgh" because Pittsburgh, PA is a metropolis.
+It's called \texttt{pittsburgh} because Pittsburgh, PA is the metropolis where this was made.
 \end{frame}
 
-\begin{frame}[label={sec:orgf10487a},fragile]{Why?}
- I \emph{love} the aesthetics of Apple's Keynote presentations on macOS but
+\begin{frame}{Why?}
+  \small
+ I love the aesthetics of Apple's Keynote presentations on macOS but
 \begin{enumerate}
 \item Keynote only runs on macOS and thus presentations are lost when switching OSs,
 \pause
@@ -80,14 +71,13 @@ It's called "pittsburgh" because Pittsburgh, PA is a metropolis.
 \item Its math fonts don't match the \LaTeX{} ones.
 \pause
 \end{enumerate}
-Beamer fixes the above and \texttt{pittsburgh} attempts to carry over the slick design of Keynote.
+Beamer fixes the above and \texttt{pittsburgh} attempts to carry over some of the slick design of Keynote.
 \end{frame}
 
 
 \section{Some cool features}
-\label{sec:orgb388f18}
 
-\begin{frame}[label={sec:org4f679a1}]{Cool feature I: \emph{Pretty text boxes}}
+\begin{frame}{Cool feature I: \emph{Pretty text boxes}}
 \widen[1cm]{
   \begin{pghcolorbox}{turquoise}{\textbf{Contextual bandits} (Langford \& Zhang, '07)}
   
@@ -106,15 +96,15 @@ Beamer fixes the above and \texttt{pittsburgh} attempts to carry over the slick 
 }
 \end{frame}
 
-\begin{frame}[label={sec:orgc0117a7},fragile]{Cool feature II: \emph{Adjustable width}}
+\begin{frame}{Cool feature II: \emph{Adjustable width}}
  What if a particular sentence just barely fits in one line?
 
 Like that one above. The \texttt{widen} command allows you to dynamically widen or shrink the allowable width:
 
-\widen[1.5cm]{\centering "What if a particular sentence just barely fits in one line?"}
+\widen[1.5cm]{\centering ``What if a particular sentence just barely fits in one line?''}
 \end{frame}
 
-\begin{frame}[label={sec:orgb7416f2}]{}
+\begin{frame}{}
 \centering
 Have fun!
 \end{frame}
@@ -124,7 +114,7 @@ Have fun!
 
 
 \begin{frame}{Appendix slide}
-  Put your appendix stuff here.
+  Start the appendix with the \texttt{\textbackslash appendixpgh} command. Slide numbers will automatically enumerate as ``A1'', ``A2'', and so on.
 \end{frame}
 
 \end{document}
