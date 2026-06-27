@@ -257,6 +257,7 @@
 \ifstrempty{#2}{%
     % The "2. " is just so that the number in the section
     % is also counted in the calculation of the longest sec
+    % THIS DOESN'T DO ANYTHING...
     \begin{lrbox}{\longestsec}2. #1\end{lrbox}
     \ifthenelse{
         \wd\longestsec > \secnamelength
@@ -266,6 +267,7 @@
 }{
     % The "2. " is just so that the number in the section
     % is also counted in the calculation of the longest sec
+    % THIS DOESN'T DO ANYTHING...
     \begin{lrbox}{\longestsec}2. #2\end{lrbox}
     \ifthenelse{
         \wd\longestsec > \secnamelength
@@ -286,13 +288,30 @@
 
 \newcommand{\firstpagetoc} {
   \begin{frame}[noframenumbering]
+    \noslidenumber
     \frametitle{\toctitle{}}
     \tocspacingaftertitle
-    \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
-    \tableofcontents
-    
-    % \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}
-    % \tableofcontents
+    {
+      \setlength{\leftskip}{\tocskip\relax}
+      \tableofcontents
+    }    
+    \thispagestyle{empty}
+  \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Final page TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\newcommand{\lastpagetoc} {
+  \begin{frame}[noframenumbering]
+    \noslidenumber
+    \frametitle{Summary}
+    \tocspacingaftertitle
+    {
+      \setlength{\leftskip}{\tocskip\relax}
+      \tableofcontents
+    }    
     \thispagestyle{empty}
   \end{frame}
 }
@@ -307,7 +326,7 @@
       \begin{frame}[noframenumbering]
         \frametitle{\toctitle{}}
         \tocspacingaftertitle
-        \setlength{\leftskip}{\dimexpr.5\textwidth-.5\secnamelength\relax}% Advance left margin accordingly
+        \setlength{\leftskip}{\tocskip\relax}% Advance left margin accordingly
         {\bfseries \tableofcontents[currentsection]}
         % Setting bfseries here to only bold the upcoming section.
         % Somehow, it doesn't apply to the shaded stuff because I set it to \mdseries above.
